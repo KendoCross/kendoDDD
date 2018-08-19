@@ -124,3 +124,5 @@
 2018/08/14 10:32:09.276 [N] [value.go:447]  {"IsSuccess":false,"RetInfo":"","RetCode":"","ErrMsg":"无此请求号的记录！"}
 2018/08/14 10:32:09.432 [N] [value.go:447]  签约确认参数：map[reqSn:XxxX_18471534152626 verCode:111111]
 2018/08/14 10:32:09.432 [N] [value.go:447]  {"IsSuccess":false,"RetInfo":"","RetCode":"","ErrMsg":"无此请求号的记录！"}
+2018/08/17 15:39:32.498 [N] [value.go:447]  签约确认参数：map[reqSn:xxxx654321 verCode:123456]
+2018/08/17 15:39:32.535 [N] [value.go:447]  {"IsSuccess":false,"RetInfo":"","RetCode":"","ErrMsg":"无此请求号的记录！"}
