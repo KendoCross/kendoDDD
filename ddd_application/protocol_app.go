@@ -63,3 +63,22 @@ func OnCfrmProtocol(es dddcore.EventStore, eb dddcore.EventBus) dddcore.CommandH
 		// esRepo.Save(ctx, p)
 	}
 }
+
+func OnGetProtocolByNo(es dddcore.EventStore, eb dddcore.EventBus) dddcore.CommandHandlerMap {
+	return func(ctx context.Context, payload map[string]string, out chan<- dddcore.BusChan) {
+
+		beeLog := logs.GetBeeLogger()
+		beeLog.Notice("获取协议信息参数：%v", payload)
+
+		p := protocol.New()
+		protocol, err := p.GetInfoByNo(payload["protocolNo"])
+		if err != nil {
+			out <- dddcore.BusChan{RespMsg: "", ErrMsg: err}
+			return
+		}
+		proJSON, err := json.Marshal(protocol)
+
+		beeLog.Notice("获取协议信息成功！")
+		out <- dddcore.BusChan{RespMsg: string(proJSON), ErrMsg: nil}
+	}
+}

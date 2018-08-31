@@ -34,3 +34,14 @@ func (this *ProtocolController) SignCfrm() {
 	}
 	this.Ctx.Output.Body([]byte(result))
 }
+
+func (this *ProtocolController) ProtocolInfo() {
+	ctx := context.Background()
+	result, err := kendoSer.DispatchCommandMap(ctx, GetProtocolInfoByNo, MapParams(&this.Controller))
+	if err != nil {
+		errStr := fmt.Sprintf("出错啦:%v\n", err)
+		http.Error(this.Ctx.ResponseWriter, errStr, 500)
+		return
+	}
+	this.Ctx.Output.Body([]byte(result))
+}

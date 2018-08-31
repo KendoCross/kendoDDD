@@ -77,6 +77,7 @@ func new(cb dddcore.CommandBus, eb dddcore.EventBus, es dddcore.EventStore) Http
 func registerCommandHandlers(cb dddcore.CommandBus, es dddcore.EventStore, eb dddcore.EventBus) {
 	cb.Subscribe(SingnProtocolByInfo, ddd_application.OnSingnProtocol(es, eb))
 	cb.SubscribeMap(CfrmProtocolByReqSn, ddd_application.OnCfrmProtocol(es, eb))
+	cb.SubscribeMap(GetProtocolInfoByNo, ddd_application.OnGetProtocolByNo(es, eb))
 }
 
 func registerEventHandlers(es dddcore.EventBus) {

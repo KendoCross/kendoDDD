@@ -117,6 +117,11 @@ func (p *Protocol) CfrmSign(reqSn string, verCode string) (string, error) {
 
 }
 
+func (p *Protocol) GetInfoByNo(protocolNo string) (*ddd_interfaces.ProtocolOrm, error) {
+	protocolRepo := crossutting.Repo.GetProtocolRepo()
+	return protocolRepo.Get(protocolNo)
+}
+
 func (p *Protocol) Changes() []*dddcore.Event {
 	return p.changes
 }

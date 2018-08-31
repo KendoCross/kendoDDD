@@ -6,6 +6,7 @@ import (
 
 type IProtocolRepo interface {
 	Add(p *ProtocolOrm) (int64, error)
+	Get(pNo string) (*ProtocolOrm, error)
 }
 
 type ProtocolOrm struct {

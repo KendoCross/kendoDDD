@@ -126,3 +126,7 @@
 2018/08/14 10:32:09.432 [N] [value.go:447]  {"IsSuccess":false,"RetInfo":"","RetCode":"","ErrMsg":"无此请求号的记录！"}
 2018/08/17 15:39:32.498 [N] [value.go:447]  签约确认参数：map[reqSn:xxxx654321 verCode:123456]
 2018/08/17 15:39:32.535 [N] [value.go:447]  {"IsSuccess":false,"RetInfo":"","RetCode":"","ErrMsg":"无此请求号的记录！"}
+2018/08/31 19:01:22.184 [N] [value.go:447]  获取协议信息参数：map[]
+2018/08/31 19:02:48.786 [N] [value.go:447]  获取协议信息参数：map[]
+2018/08/31 19:03:51.946 [N] [value.go:447]  获取协议信息参数：map[protocolNo:c577121b-57d2-4a44-a5af-3b9d52219e77]
+2018/08/31 19:03:51.948 [N] [value.go:447]  获取协议信息成功！
