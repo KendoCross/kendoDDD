@@ -21,6 +21,7 @@ func (r *RepoFactory) Init() {
 	r.protocolRepo = repos.NewProtocolRepo(o)
 }
 
+//支付协议仓库
 func (r *RepoFactory) GetProtocolRepo() ddd_interfaces.IProtocolRepo {
 	return r.protocolRepo
 }

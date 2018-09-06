@@ -9,13 +9,13 @@ import (
 )
 
 // Server API for HTTP
-// 订阅中心
 type HttpServer interface {
 	DispatchCommand(context.Context, string, []byte) (string, error)
 	DispatchCommandMap(context.Context, string, map[string]string) (string, error)
 }
 
-var kendoSer HttpServer
+//统一的HTTP服务
+var kendoHttpSer HttpServer
 
 type httpServer struct {
 	commandBus dddcore.CommandBus
@@ -28,10 +28,10 @@ func init() {
 	eventBus := memoryBus.NewEventBus()
 	commandBus := memoryBus.NewCommandBus()
 
-	kendoSer = new(commandBus, eventBus, eventStore)
+	kendoHttpSer = newHttpServer(commandBus, eventBus, eventStore)
 }
 
-// DispatchCommand implements proto.UserServer interface
+// 中转命令
 func (s *httpServer) DispatchCommand(ctx context.Context, command string, payload []byte) (string, error) {
 	out := make(chan dddcore.BusChan)
 	defer close(out)
@@ -48,6 +48,7 @@ func (s *httpServer) DispatchCommand(ctx context.Context, command string, payloa
 	}
 }
 
+//中转命令
 func (s *httpServer) DispatchCommandMap(ctx context.Context, command string, payload map[string]string) (string, error) {
 	out := make(chan dddcore.BusChan)
 	defer close(out)
@@ -64,21 +65,23 @@ func (s *httpServer) DispatchCommandMap(ctx context.Context, command string, pay
 	}
 }
 
-// New returns new user server object
-func new(cb dddcore.CommandBus, eb dddcore.EventBus, es dddcore.EventStore) HttpServer {
+// newHttpServer returns new server object
+func newHttpServer(cb dddcore.CommandBus, eb dddcore.EventBus, es dddcore.EventStore) HttpServer {
 	s := &httpServer{cb, eb, es}
 
-	registerCommandHandlers(cb, es, eb)
-	registerEventHandlers(eb)
+	registerHttpCommandHandlers(cb, es, eb)
+	registerHttpEventHandlers(eb)
 
 	return s
 }
 
-func registerCommandHandlers(cb dddcore.CommandBus, es dddcore.EventStore, eb dddcore.EventBus) {
+//注册所有命令
+func registerHttpCommandHandlers(cb dddcore.CommandBus, es dddcore.EventStore, eb dddcore.EventBus) {
 	cb.Subscribe(SingnProtocolByInfo, ddd_application.OnSingnProtocol(es, eb))
 	cb.SubscribeMap(CfrmProtocolByReqSn, ddd_application.OnCfrmProtocol(es, eb))
 	cb.SubscribeMap(GetProtocolInfoByNo, ddd_application.OnGetProtocolByNo(es, eb))
 }
 
-func registerEventHandlers(es dddcore.EventBus) {
+//注册所有事件
+func registerHttpEventHandlers(es dddcore.EventBus) {
 }

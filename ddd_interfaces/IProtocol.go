@@ -18,7 +18,7 @@ type ProtocolOrm struct {
 	//同一平台细分的子类
 	AisleBranch int `orm:"column(AisleBranch)"`
 	//支付平台生成的协议号
-	AisleProtocol string `orm:"column(AisleProtocol)"`
+	AisleProtocol string `orm:"column(AisleProtocol)" json:"-"`
 	BankId        string `orm:"column(BankId)"`
 	//银行code，各平台不一样
 	BankCode string `orm:"column(BankCode)"`
