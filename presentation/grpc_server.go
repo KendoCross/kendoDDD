@@ -2,22 +2,56 @@ package presentation
 
 import (
 	"context"
+	"fmt"
+	"net"
 
 	"../crossutting/memoryBus"
 	"../ddd_application"
 	"../ddd_infrastructure/kendoDDDProto"
+	"../ddd_infrastructure/os/shutdown"
 	"../dddcore"
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
+	"google.golang.org/grpc"
 )
 
+//初始化RPC服务
+func InitRPC() {
+	beeLog := logs.GetBeeLogger()
+
+	grpcServer := grpc.NewServer()
+	kendoDDDProto.RegisterKendoGrpcServer(grpcServer, KendoRpcSer)
+
+	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%s", "127.0.0.1", beego.AppConfig.String("rpcport")))
+	if err != nil {
+		beeLog.Info("failed to listen: %v\n", err)
+	} else {
+		beeLog.Info("[user] running at %s:%d\n", "127.0.0.1", beego.AppConfig.String("rpcport"))
+	}
+
+	go func() {
+		beeLog.Critical("failed to serve: %v\n", grpcServer.Serve(lis))
+	}()
+
+	shutdown.GracefulStop(func() {
+		beeLog.Info("[user] shutting down...\n")
+
+		grpcServer.GracefulStop()
+
+		beeLog.Info("[user] gracefully stopped\n")
+	})
+
+}
+
 //统一的Rpc服务
-var kendoRpcSer kendoDDDProto.KendoGrpcServer
+var KendoRpcSer kendoDDDProto.KendoGrpcServer
 
 func init() {
 	eventStore := memoryBus.NewEventStore()
 	eventBus := memoryBus.NewEventBus()
 	commandBus := memoryBus.NewCommandBus()
 
-	kendoRpcSer = newGrpcServer(commandBus, eventBus, eventStore)
+	KendoRpcSer = newGrpcServer(commandBus, eventBus, eventStore)
 }
 
 //
