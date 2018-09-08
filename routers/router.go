@@ -6,6 +6,7 @@ import (
 )
 
 //服务初始化，包括HTTP和RPC服务两种
+//好像Golang一个进程只能监听一个端口
 func init() {
 	if beego.AppConfig.String("isHTTPSer") == "yes" {
 		beego.Router("/", &presentation.MainController{})

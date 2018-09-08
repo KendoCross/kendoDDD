@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	Repo *RepoFactory = &RepoFactory{}
+	RepoFac *RepoFactory = &RepoFactory{}
 )
 
 type RepoFactory struct {

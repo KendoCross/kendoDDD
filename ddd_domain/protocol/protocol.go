@@ -92,7 +92,7 @@ func (p *Protocol) CfrmSign(reqSn string, verCode string) (string, error) {
 			Status:        1,
 		}
 
-		protocolRepo := crossutting.Repo.GetProtocolRepo()
+		protocolRepo := crossutting.RepoFac.GetProtocolRepo()
 		_, err := protocolRepo.Add(protocolOrm)
 
 		if err != nil {
@@ -118,7 +118,7 @@ func (p *Protocol) CfrmSign(reqSn string, verCode string) (string, error) {
 }
 
 func (p *Protocol) GetInfoByNo(protocolNo string) (*ddd_interfaces.ProtocolOrm, error) {
-	protocolRepo := crossutting.Repo.GetProtocolRepo()
+	protocolRepo := crossutting.RepoFac.GetProtocolRepo()
 	return protocolRepo.Get(protocolNo)
 }
 

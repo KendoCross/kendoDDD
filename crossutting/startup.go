@@ -22,5 +22,5 @@ func init() {
 	orm.RegisterDataBase("default", "sqlite3", "assets/kendopay.db")
 
 	//仓储层初始化
-	Repo.Init()
+	RepoFac.Init()
 }
