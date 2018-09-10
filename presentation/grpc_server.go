@@ -26,7 +26,7 @@ func InitRPC() {
 	if err != nil {
 		beeLog.Info("failed to listen: %v\n", err)
 	} else {
-		beeLog.Info("[user] running at %s:%d\n", "127.0.0.1", beego.AppConfig.String("rpcport"))
+		beeLog.Info("[RPC] running at %s:%d\n", "127.0.0.1", beego.AppConfig.String("rpcport"))
 	}
 
 	go func() {
@@ -34,16 +34,16 @@ func InitRPC() {
 	}()
 
 	shutdown.GracefulStop(func() {
-		beeLog.Info("[user] shutting down...\n")
+		beeLog.Info("[RPC] shutting down...\n")
 
 		grpcServer.GracefulStop()
 
-		beeLog.Info("[user] gracefully stopped\n")
+		beeLog.Info("[RPC] gracefully stopped\n")
 	})
 
 }
 
-//统一的Rpc服务
+// KendoRpcSer 统一的Rpc服务
 var KendoRpcSer kendoDDDProto.KendoGrpcServer
 
 func init() {
