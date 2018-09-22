@@ -75,13 +75,14 @@ func newHttpServer(cb dddcore.CommandBus, eb dddcore.EventBus, es dddcore.EventS
 	return s
 }
 
-//注册所有命令
+//registerHttpCommandHandlers注册所有命令
 func registerHttpCommandHandlers(cb dddcore.CommandBus, es dddcore.EventStore, eb dddcore.EventBus) {
 	cb.Subscribe(SingnProtocolByInfo, ddd_application.OnSingnProtocol(es, eb))
 	cb.SubscribeMap(CfrmProtocolByReqSn, ddd_application.OnCfrmProtocol(es, eb))
 	cb.SubscribeMap(GetProtocolInfoByNo, ddd_application.OnGetProtocolByNo(es, eb))
+	cb.SubscribeMap(GetWSTokenByUser, ddd_application.OnGetWsToken(es, eb))
 }
 
-//注册所有事件
+//registerHttpEventHandlers注册所有事件
 func registerHttpEventHandlers(es dddcore.EventBus) {
 }

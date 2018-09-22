@@ -7,4 +7,6 @@ const (
 	CfrmProtocolByReqSn = "cfrm-protocol-by-reqsn"
 	//通过No获取协议基本信息
 	GetProtocolInfoByNo = "get-prorocolinfo-by-no"
+	// GetWSTokenByUser 获取长连接的Token
+	GetWSTokenByUser = "get-ws-token-by-user"
 )

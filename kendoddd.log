@@ -136,3 +136,53 @@
 2018/09/07 15:20:17.083 [N] [value.go:447]  获取协议信息成功！
 2018/09/07 16:26:17.598 [N] [value.go:447]  获取协议信息参数：map[protocolNo:c577121b-57d2-4a44-a5af-3b9d52219e77]
 2018/09/07 16:26:17.599 [N] [value.go:447]  获取协议信息成功！
+2018/09/22 10:10:07.251 [N] [value.go:447]  获取长连接Token参数：map[userID:kendo123]
+2018/09/22 10:10:07.273 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:12:21.070 [N] [value.go:447]  获取长连接Token参数：map[userID:kendo123]
+2018/09/22 10:12:21.070 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:13:49.789 [C] [asm_amd64.s:522]  the request url is  /WS/Join
+2018/09/22 10:13:49.789 [C] [asm_amd64.s:522]  Handler crashed with error can't find templatefile in the path:views/websocketcontroller/join.tpl
+2018/09/22 10:13:49.789 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/runtime/asm_amd64.s:522
+2018/09/22 10:13:49.789 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/runtime/panic.go:513
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/template.go:73
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/controller.go:264
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/controller.go:215
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/controller.go:195
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/router.go:859
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/net/http/server.go:2741
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/net/http/server.go:1847
+2018/09/22 10:13:49.791 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/runtime/asm_amd64.s:1333
+2018/09/22 10:13:49.791 [server.go:2977]  [HTTP] http: response.Write on hijacked connection
+2018/09/22 10:13:49.791 [server.go:2977]  [HTTP] http: response.WriteHeader on hijacked connection
+2018/09/22 10:13:49.792 [E] [server_ws.go:100]  WebSocket closed: 428e799b-f6ea-4cb0-a0f1-e0504aafd49c 
+2018/09/22 10:19:16.404 [E] [template.go:174]  parse template err: websocket.html template: websocket.html:3: function "i18n" not defined
+2018/09/22 10:19:16.404 [W] [beego.go:100]  template: websocket.html:3: function "i18n" not defined
+2018/09/22 10:26:40.711 [N] [value.go:447]  获取长连接Token参数：map[userID:kendoDDD]
+2018/09/22 10:26:40.717 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:26:45.092 [N] [value.go:447]  获取长连接Token参数：map[userID:kendo123]
+2018/09/22 10:26:45.092 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:28:10.391 [N] [value.go:447]  获取长连接Token参数：map[userID:kendoDDD]
+2018/09/22 10:28:10.391 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:28:49.567 [E] [server_ws.go:100]  WebSocket closed: a88f3caa-e965-4110-a9e2-3ccd293bf85b 
+2018/09/22 10:28:49.568 [C] [asm_amd64.s:522]  the request url is  /WS/Join
+2018/09/22 10:28:49.568 [C] [asm_amd64.s:522]  Handler crashed with error can't find templatefile in the path:views/websocketcontroller/join.tpl
+2018/09/22 10:28:49.569 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/runtime/asm_amd64.s:522
+2018/09/22 10:28:49.569 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/runtime/panic.go:513
+2018/09/22 10:28:49.570 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/template.go:73
+2018/09/22 10:28:49.571 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/controller.go:264
+2018/09/22 10:28:49.571 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/controller.go:215
+2018/09/22 10:28:49.572 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/controller.go:195
+2018/09/22 10:28:49.572 [C] [asm_amd64.s:522]  C:/Users/ChenyWork/go/src/github.com/astaxie/beego/router.go:859
+2018/09/22 10:28:49.572 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/net/http/server.go:2741
+2018/09/22 10:28:49.573 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/net/http/server.go:1847
+2018/09/22 10:28:49.573 [C] [asm_amd64.s:522]  D:/Program Files/Go/src/runtime/asm_amd64.s:1333
+2018/09/22 10:28:49.573 [server.go:2977]  [HTTP] http: response.Write on hijacked connection
+2018/09/22 10:28:49.574 [server.go:2977]  [HTTP] http: response.WriteHeader on hijacked connection
+2018/09/22 10:29:06.423 [N] [value.go:447]  获取长连接Token参数：map[userID:kendoDDD]
+2018/09/22 10:29:06.423 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:29:07.150 [N] [value.go:447]  获取长连接Token参数：map[userID:kendoDDD]
+2018/09/22 10:29:07.150 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:29:17.870 [N] [value.go:447]  获取长连接Token参数：map[userID:kendo1]
+2018/09/22 10:29:17.870 [N] [value.go:447]  获取长连接Token成功！
+2018/09/22 10:31:53.626 [N] [value.go:447]  获取长连接Token参数：map[userID:kendo123]
+2018/09/22 10:31:53.640 [N] [value.go:447]  获取长连接Token成功！
