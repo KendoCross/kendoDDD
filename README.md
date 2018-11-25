@@ -23,6 +23,7 @@
 
 　　总体分层结构如下：
 ![](https://github.com/KendoCross/kendoDDD/blob/master/assets/02.png)
+
 　　1.presentation 表现层。Web框架选择了BeeGo，Beego是基于MVC的。我将V和C层都放在了表现层。路由设置、Views、以及Controllers这些统在一起都算是表现层的。领域驱动设计，更多关注的是业务，以及其变更时能够比较好的扩展与维护。表现层逻辑也很简单，主要是承接Beego框架转发过来的请求，然后通过memoryBus将请求发布出去，至于是谁订阅了该请求，统一委托给 第三方 HttpServer来处理，这也是 迪米特法则的精要。解除了表现层或者说web请求与具体的处理该请求的业务服务的直接关联（耦合）。这样做的好处，只举一例。业务层可以是独立的分布式服务，不一定跟表现层在一个进程服务里。
 
 　![](https://github.com/KendoCross/kendoDDD/blob/master/assets/03.png)

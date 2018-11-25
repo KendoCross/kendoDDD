@@ -15,7 +15,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-//初始化RPC服务
+//InitRPC 初始化RPC服务
 func InitRPC() {
 	beeLog := logs.GetBeeLogger()
 
