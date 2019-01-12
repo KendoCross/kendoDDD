@@ -1,6 +1,7 @@
 package memoryBus
 
 import (
+	"runtime"
 	"context"
 
 	dddcore "../../dddcore"
@@ -26,7 +27,7 @@ func (bus *eventBus) Unsubscribe(eventType string, fn dddcore.EventHandler) erro
 }
 
 func NewEventBus() dddcore.EventBus {
-	return &eventBus{messagebus.New()}
+	return &eventBus{messagebus.New(runtime.NumCPU())}
 }
 
 type loggableEventBus struct {

@@ -1,6 +1,7 @@
 package memoryBus
 
 import (
+	"runtime"
 	"context"
 
 	dddcore "../../dddcore"
@@ -37,7 +38,7 @@ func (bus *commandBus) UnsubscribeMap(command string, fn dddcore.CommandHandlerM
 
 // New creates in memory command bus
 func NewCommandBus() dddcore.CommandBus {
-	return &commandBus{messagebus.New()}
+	return &commandBus{messagebus.New(runtime.NumCPU())}
 }
 
 type loggableCommandBus struct {
