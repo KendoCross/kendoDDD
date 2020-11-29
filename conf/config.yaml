@@ -1,0 +1,15 @@
+#dev | test | beta | prod
+APP_MODE: dev
+APP_PORT: 12345
+GRPC_PORT: 54321
+LOG_FILE: /var/log/kendo/ddd.log
+#K8S配置相关
+K8S_MODE: Outer
+#数据库配置
+MYSQL_DSN: root:sa@tcp(127.0.0.1:3306)/mydb?charset=utf8mb4&loc=Local&parseTime=true&timeout=3s
+MYSQL_MAXOPEN: 15
+MYSQL_MAXIDLE: 3
+#Redis配置
+REDIS_ADDR: redis:6379
+REDIS_PSW: qDf9s
+REDIS_DB: 0

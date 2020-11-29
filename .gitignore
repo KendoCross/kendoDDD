@@ -1,14 +1,9 @@
-# Binaries for programs and plugins
+.vscode/
+.idea/
+.env
 *.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-*.log
+__debug_bin
+go.sum
+asset/mydb.db
 
-# Test binary, build with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-debug
+kendo

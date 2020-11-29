@@ -1,20 +1,27 @@
 package main
 
 import (
-	"./presentation"
-	"./routers"
-	"github.com/astaxie/beego"
+	"github.com/KendoCross/kendoDDD/crosscutting"
+	"github.com/KendoCross/kendoDDD/presentation"
+	"github.com/spf13/viper"
+	"golang.org/x/sync/errgroup"
 )
 
 func main() {
-	//根据配置决定启动的服务类型。 #是HTTP服务或RPC服务或WebSocket
-	serTp := beego.AppConfig.String("SerType")
-	switch serTp {
-	case "RPC":
-		presentation.InitRPC()
-	case "HTTP":
-	default:
-		routers.InitHTTP()
-		beego.Run()
+	crosscutting.StartUp()
+	g := new(errgroup.Group)
+	g.Go(func() error {
+		router := presentation.InitRouter()
+		return router.Run(":" + viper.GetString("APP_PORT"))
+	})
+
+	// g.Go(func() error {
+	// 	err := presentation.InitRPC()
+	// 	return err
+	// })
+
+	if err := g.Wait(); err != nil {
+		panic(err)
 	}
+
 }

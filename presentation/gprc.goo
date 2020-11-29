@@ -1,0 +1,39 @@
+package presentation
+
+import (
+	"fmt"
+	"log"
+	"net"
+
+	//envoyAuth "github.com/envoyproxy/go-control-plane/envoy/service/auth/v3"
+
+	"github.com/spf13/viper"
+	"google.golang.org/grpc"
+	"github.com/KendoCross/kendoDDD/application"
+	"github.com/KendoCross/kendoDDD/application/pb/base_srv"
+	"github.com/KendoCross/kendoDDD/presentation/middleware"
+)
+
+func InitRPC() error {
+	if viper.GetString("APP_MODE") == "prod" {
+		middleware.IsProdMod = true
+	}
+	port := viper.GetString("GRPC_PORT")
+	port = fmt.Sprintf(":%s", port)
+	lis, err := net.Listen("tcp", port)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+	//添加拦截器，用以日志\认证等
+	var opts []grpc.ServerOption
+	opts = append(opts, grpc.UnaryInterceptor(middleware.GrpcInterceptor))
+	grpcServer := grpc.NewServer(opts...)
+	//envoyAuth.RegisterAuthorizationServer(grpcServer, &application.AuthServiceApp{})
+	base_srv.RegisterBaseSvcServer(grpcServer, &application.BaseServiceApp{})
+	println("gRPC Srv start ...", port)
+	if err := grpcServer.Serve(lis); err != nil {
+		return err
+	}
+
+	return nil
+}
